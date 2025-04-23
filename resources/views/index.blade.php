@@ -152,9 +152,9 @@
         <a href="{{ route('detail', $book) }}" class="block relative h-[450px]">
           <div class="absolute inset-0">
             @if ($book->cover_image)
-                <img src="{{ asset('storage/' . $book->cover_image) }}" alt="{{ $book->title }}" class="w-full h-full object-cover border-2 border-black rounded-lg"/>
+              <img src="{{ asset('storage/' . $book->cover_image) }}" alt="{{ $book->title }}" class="w-full h-full object-cover border-2 border-black rounded-lg"/>
             @else
-                <img src="" alt="{{ $book->title }}" class="w-full h-full object-cover border-2 border-black rounded-lg"/>
+              <img src="{{ asset('path/to/default/image.jpg') }}" alt="{{ $book->title }}" class="w-full h-full object-cover border-2 border-black rounded-lg"/>
             @endif
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-6">
@@ -170,10 +170,10 @@
         </a>
       </div>
       @endforeach
-    <a href="{{ '/create' }}">
+    </div>
+  <a href="{{ '/create' }}">
     <button type="button" class="flex item-center mx-auto mt-8 text-white bg-gray-900 hover:bg-gray-950 font-medium rounded-lg text-md px-8 py-3 me-2 mb-2">Add Book</button>
     </a>
-  </main>
 </div>
 
 <div class="ml-[100px]">

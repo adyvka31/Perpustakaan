@@ -60,20 +60,27 @@ public function store(Request $request)
         'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10240',
     ]);
 
-    // Handle cover image upload if provided
-    if ($request->hasFile('cover_image')) {
-        $image = $request->file('cover_image');
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->storeAs('public/cover_images', $imageName);
-        $bookData['cover_image'] = 'cover_images/' . $imageName;
-    }
-
     if($validator->fails()) {
         return redirect()->back()->withErrors($validator)->withInput();
     }
 
     // Prepare book data
     $bookData = $request->except('cover_image');
+
+    // Handle cover image upload if provided
+    if ($request->hasFile('cover_image')) {
+        try {
+            $image = $request->file('cover_image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $imagePath = $image->storeAs('public/cover_images', $imageName);
+            
+            // Simpan path relatif ke dalam database
+            $bookData['cover_image'] = 'cover_images/' . $imageName;
+        } catch (\Exception $e) {
+            // Tangani kesalahan upload
+            return redirect()->back()->with('error', 'Gagal mengunggah gambar: ' . $e->getMessage());
+        }
+    }
     
     // Create new book
     Book::create($bookData);
