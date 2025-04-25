@@ -147,9 +147,9 @@
         </a>
       </div>
       <!-- Card 4, 5, 6 dan seterusnya -->
-      @foreach ($books   as $book)
+      @foreach ($books as $book)
       <div class="rounded-lg overflow-hidden shadow-lg">
-        <a href="{{ route('detail', $book) }}" class="block relative h-[450px]">
+        <a href="{{ route('book.detail', $book) }}" class="block relative h-[450px]">
           <div class="absolute inset-0">
             @if ($book->cover_image)
               <img src="{{ asset('storage/' . $book->cover_image) }}" alt="{{ $book->title }}" class="w-full h-full object-cover border-2 border-black rounded-lg"/>
@@ -171,7 +171,7 @@
       </div>
       @endforeach
     </div>
-  <a href="{{ '/create' }}">
+  <a href="{{ route('book.create') }}">
     <button type="button" class="flex item-center mx-auto mt-8 text-white bg-gray-900 hover:bg-gray-950 font-medium rounded-lg text-md px-8 py-3 me-2 mb-2">Add Book</button>
     </a>
 </div>

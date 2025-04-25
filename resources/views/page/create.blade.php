@@ -101,6 +101,14 @@
                         @enderror
                       </div>
                     </div>
+                    <div class="col-span-3">
+                      <label for="cover_image" class="block text-sm/6 font-medium text-gray-900">Type of Book</label>
+                      <div class="mt-2">
+                        <select name="" id="">
+                          <option value="">Productivity</option>
+                        </select>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
