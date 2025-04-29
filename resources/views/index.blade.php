@@ -37,7 +37,7 @@
         <div class="">
           <a href="#" class="flex items-center space-x-2 rtl:space-x-reverse">
             <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
-            <span class="self-center text-base font-semibold whitespace-nowrap text-black">Flowbite</span>
+            <span class="self-center text-base font-semibold whitespace-nowrap text-black">Perpustakaan</span>
         </a>
           <p class="mt-8 text-6xl font-semibold tracking-wide leading-20 text-pretty text-black">Discover New Worlds in Every Page</p>
           <p class="mt-10 text-sm leading-relaxed text-gray-600">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.</p>
@@ -171,9 +171,13 @@
       </div>
       @endforeach
     </div>
-  <a href="{{ route('book.create') }}">
-    <button type="button" class="flex item-center mx-auto mt-8 text-white bg-gray-900 hover:bg-gray-950 font-medium rounded-lg text-md px-8 py-3 me-2 mb-2">Add Book</button>
-    </a>
+    @auth
+      @if (auth()->user()->role === 'author')
+      <a href="{{ route('book.create') }}">
+        <button type="button" class="flex item-center mx-auto mt-8 text-white bg-gray-900 hover:bg-gray-950 font-medium rounded-lg text-md px-8 py-3 me-2 mb-2">Add Book</button>
+      </a>
+      @endif
+    @endauth
 </div>
 
 <div class="ml-[100px]">

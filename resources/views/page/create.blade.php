@@ -102,10 +102,14 @@
                       </div>
                     </div>
                     <div class="col-span-3">
-                      <label for="cover_image" class="block text-sm/6 font-medium text-gray-900">Type of Book</label>
+                      <label for="type" class="block text-sm/6 font-medium text-gray-900">Type of Book</label>
                       <div class="mt-2">
                         <select name="" id="">
                           <option value="">Productivity</option>
+                          <option value="">Horor</option>
+                          <option value="">Romance</option>
+                          <option value="">Science Fiction</option>
+                          <option value="">History</option>
                         </select>
                       </div>
                     </div>
